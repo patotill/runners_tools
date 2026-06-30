@@ -3,40 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Ritmo</title>
+    <title>Runner's Tools</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="contenedor">
-        <h1><i class="fa-solid fa-person-running"></i> Ritmo del Corredor</h1>
-        <form id="paceForm">
-            <label for="distancia"><i class="fa-solid fa-route"></i> Distancia (km):</label>
-            <select id="distancia" required>
-                <option value="5">5k</option>
-                <option value="10">10k</option>
-                <option value="21.097">Media Maratón (21k)</option>
-                <option value="42.195">Maratón (42k)</option>
-                <option value="otra">Otra...</option> 
-            </select>
 
-            <input type="number" id="distanciaPersonalizada" class="oculto" placeholder="Ingresa los km (ej: 15.5)" step="0.01" min="0.1">
+    <h1 class="titulo-principal"><i class="fa-solid fa-stopwatch-20"></i> Herramientas del <span>Corredor</span></h1>
 
-            <label for="horas"><i class="fa-solid fa-stopwatch"></i> Tiempo Objetivo:</label>
-            <div class="tiempo-inputs">
-                <input type="number" id="horas" placeholder="Hs" min="0" value="0" required>
-                <input type="number" id="minutos" placeholder="Min" min="0" max="59" value="0" required>
-                <input type="number" id="segundos" placeholder="Seg" min="0" max="59" value="0" required>
+    <div class="layout-contenedor">
+        
+        <div class="contenedor">
+            <h1><i class="fa-solid fa-person-running"></i> Ritmo del Corredor</h1>
+            <form id="paceForm">
+                <label for="distancia"><i class="fa-solid fa-route"></i> Distancia (km):</label>
+                <select id="distancia" required>
+                    <option value="5">5k</option>
+                    <option value="10">10k</option>
+                    <option value="21.097">Media Maratón (21k)</option>
+                    <option value="42.195">Maratón (42k)</option>
+                    <option value="otra">Otra...</option> 
+                </select>
+                <input type="number" id="distanciaPersonalizada" class="oculto" placeholder="Ingresa los km (ej: 15.5)" step="0.01" min="0.1">
+
+                <label for="horas"><i class="fa-solid fa-stopwatch"></i> Tiempo Objetivo:</label>
+                <div class="tiempo-inputs">
+                    <input type="number" id="horas" placeholder="Hs" min="0" value="0" required>
+                    <input type="number" id="minutos" placeholder="Min" min="0" max="59" value="0" required>
+                    <input type="number" id="segundos" placeholder="Seg" min="0" max="59" value="0" required>
+                </div>
+                <button type="submit"><i class="fa-solid fa-calculator"></i> Calcular Ritmo</button>
+            </form>
+
+            <div id="resultado" class="oculto">
+                <h2><i class="fa-solid fa-shoe-prints"></i> Tu ritmo debe ser:</h2>
+                <p id="ritmoMostrado">--:-- min/km</p>
             </div>
-
-            <button type="submit"><i class="fa-solid fa-calculator"></i> Calcular</button>
-        </form>
-
-        <div id="resultado" class="oculto">
-            <h2><i class="fa-solid fa-shoe-prints"></i> Tu ritmo debe ser:</h2>
-            <p id="ritmoMostrado">--:-- min/km</p>
         </div>
+
+        <div class="grupo-derecho">
+            
+            <div class="columnas-predictores">
+                <div class="columna-extra">
+                    <button id="btnDesplegarPredictor" class="btn-desplegable">
+                        <i class="fa-solid fa-chevron-down"></i> Predictor 21k
+                    </button>
+                    <div id="seccionPredictor" class="contenedor colapsable oculto-colapsable">
+                        <h1><i class="fa-solid fa-chart-line"></i> Predictor 21k</h1>
+                        <form id="predictForm">
+                            <label for="predHoras"><i class="fa-solid fa-stopwatch"></i> Tu tiempo en 10km:</label>
+                            <div class="tiempo-inputs">
+                                <input type="number" id="predHoras" placeholder="Hs" min="0" value="0" required>
+                                <input type="number" id="predMinutos" placeholder="Min" min="0" max="59" value="0" required>
+                                <input type="number" id="predSegundos" placeholder="Seg" min="0" max="59" value="0" required>
+                            </div>
+                            <button type="submit"><i class="fa-solid fa-wand-magic-sparkles"></i> Calcular Media Maratón</button>
+                        </form>
+                        <div id="resultadoPredictor" class="oculto">
+                            <h2><i class="fa-solid fa-bullseye"></i> Tu tiempo estimado será:</h2>
+                            <p id="prediccionMostrada">--:--</p>
+                        </div>
+                        
+                        <p class="record-texto">WR - Jacob Kiplimo - 00:57:20 <br>(Lisboa 08.03.2026)</p>
+
+                    </div>
+                </div>
+
+                <div class="columna-extra">
+                    <button id="btnDesplegarPredictor42" class="btn-desplegable">
+                        <i class="fa-solid fa-chevron-down"></i> Predictor 42k
+                    </button>
+                    <div id="seccionPredictor42" class="contenedor colapsable oculto-colapsable">
+                        <h1><i class="fa-solid fa-fire-flame-curved"></i> Predictor 42k</h1>
+                        <form id="predict42Form">
+                            <label for="pred42Horas"><i class="fa-solid fa-stopwatch"></i> Tu tiempo en 21km:</label>
+                            <div class="tiempo-inputs">
+                                <input type="number" id="pred42Horas" placeholder="Hs" min="0" value="0" required>
+                                <input type="number" id="pred42Minutos" placeholder="Min" min="0" max="59" value="0" required>
+                                <input type="number" id="pred42Segundos" placeholder="Seg" min="0" max="59" value="0" required>
+                            </div>
+                            <button type="submit"><i class="fa-solid fa-fire-flame-curved"></i> Calcular Maratón</button>
+                        </form>
+                        <div id="resultadoPredictor42" class="oculto">
+                            <h2><i class="fa-solid fa-bullseye"></i> Tu tiempo estimado será:</h2>
+                            <p id="prediccionMostrada42">--:--</p>
+                        </div>
+                        
+                        <p class="record-texto">WR - Sebastián Sawe - 01:59:30 <br> (Londres 26.04.2026)</p>
+
+                    </div>
+                </div>
+            </div> 
+
+            <p class="nota-disclaimer">* Las predicciones de tiempo no son exactas, son estimaciones que dependen de distintas variables (entreno, terreno, clima, etc.)</p>
+
+        </div> 
+
     </div>
+
+    <div class="firma-creador"> - Powered by <span>PHT</span></div>
+
     <script src="script.js"></script>
 </body>
 </html>

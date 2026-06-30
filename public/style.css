@@ -4,15 +4,74 @@ body {
     font-family: 'Montserrat', sans-serif;
     color: #e0e0e0;
     display: flex;
+    flex-direction: column; 
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    align-items: center; 
+    min-height: 100vh;
     margin: 0;
+    padding: 20px;
+    background-color: #121212; 
     
     background-image: linear-gradient(rgba(18, 18, 18, 0.85), rgba(18, 18, 18, 0.85)), url('Pistagemini.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    box-sizing: border-box;
+}
+
+/* ESTILOS DEL TÍTULO PRINCIPAL */
+.titulo-principal {
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ffffff;
+    margin-top: 0;
+    margin-bottom: 40px;
+    text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.7); 
+    text-align: center;
+}
+
+.titulo-principal span {
+    color: #00c4cc; 
+}
+
+.titulo-principal i.fa-solid {
+    color: #ffffff;
+    margin-right: 10px;
+}
+
+.layout-contenedor {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;               
+    align-items: flex-start; 
+    justify-content: center;
+    flex-wrap: wrap;         
+    max-width: 1200px;
+    width: 100%;
+}
+
+.grupo-derecho {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; 
+    gap: 15px;
+}
+
+.columnas-predictores {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.columna-extra {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 340px;
 }
 
 .contenedor {
@@ -26,7 +85,7 @@ body {
     box-sizing: border-box;
 }
 
-h1 {
+.contenedor h1 {
     font-size: 1.4rem;
     margin-top: 0;
     margin-bottom: 25px;
@@ -98,7 +157,7 @@ button {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 button:hover {
@@ -110,11 +169,50 @@ button:active {
     transform: translateY(0);
 }
 
+.btn-desplegable {
+    width: 100%; 
+    margin-top: 0; 
+    background: transparent;
+    border: 2px solid #00c4cc;
+    color: #00c4cc;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn-desplegable:hover {
+    background: rgba(0, 196, 204, 0.1);
+    transform: translateY(-2px);
+    box-shadow: none;
+}
+
+.colapsable {
+    margin-top: 20px;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.4s ease, opacity 0.3s ease, margin-top 0.4s ease;
+    max-height: 600px; 
+    opacity: 1;
+}
+
+.oculto-colapsable {
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    border-top: none;
+    opacity: 0;
+    pointer-events: none;
+}
+
 .oculto {
     display: none !important;
 }
 
-#resultado {
+#resultado, #resultadoPredictor, #resultadoPredictor42 {
     background-color: #2a2a35;
     padding: 15px;
     border-radius: 8px;
@@ -122,29 +220,29 @@ button:active {
     animation: aparecer 0.4s ease-out;
 }
 
-#resultado h2 {
+#resultado h2, #resultadoPredictor h2, #resultadoPredictor42 h2 {
     font-size: 1rem;
     color: #9ca3af;
     margin: 0 0 10px 0;
 }
 
-#ritmoMostrado {
+#ritmoMostrado, #prediccionMostrada, #prediccionMostrada42 {
     font-size: 32px;
     font-weight: 700;
     color: #00e676;
     margin: 0;
 }
 
-i.fa-solid {
+.contenedor i.fa-solid {
     color: #00c4cc;
     margin-right: 8px;
 }
 
-h1 i.fa-solid {
+.contenedor h1 i.fa-solid {
     color: #ffffff;
 }
 
-#resultado i.fa-solid {
+#resultado i.fa-solid, #resultadoPredictor i.fa-solid, #resultadoPredictor42 i.fa-solid {
     color: #00e676;
 }
 
@@ -155,4 +253,53 @@ button i.fa-solid {
 @keyframes aparecer {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+.nota-disclaimer {
+    color: #ffffff;
+    font-size: 0.75rem;
+    opacity: 0.7;
+    font-style: italic;
+    margin: 0;
+    padding-right: 15px; 
+    white-space: nowrap; 
+}
+
+/* FIRMA DE AUTOR (Esquina inferior derecha) */
+.firma-creador {
+    position: fixed;
+    bottom: 15px;
+    right: 25px;
+    color: #9ca3af; 
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    opacity: 0.5; 
+    cursor: default;
+    transition: opacity 0.3s ease;
+    z-index: 100; 
+}
+
+.firma-creador:hover {
+    opacity: 1; 
+}
+
+.firma-creador span {
+    color: #00c4cc; 
+}
+
+/* NUEVO: ESTILO PARA LOS TEXTOS DE LOS RÉCORDS MUNDIALES */
+.record-texto {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    margin-top: 15px;
+    margin-bottom: -10px;
+    text-align: center;
+    opacity: 0.8;
+    
+    /* Esta línea es la clave: limita el ancho para forzar el salto antes del paréntesis */
+    max-width: 280px; 
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.2;
 }
