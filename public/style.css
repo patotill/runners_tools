@@ -309,7 +309,7 @@ button i.fa-solid {
 /* ========================================= */
 /* MEDIA QUERIES - DISEÑO RESPONSIVE (MÓVIL) */
 /* ========================================= */
-@media (max-width: 768px) {
+@media (max-width: 950px) {
     body {
         padding: 15px 10px; 
     }
