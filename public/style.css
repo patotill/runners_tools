@@ -311,27 +311,38 @@ button i.fa-solid {
 /* ========================================= */
 @media (max-width: 768px) {
     body {
-        padding: 15px 10px; /* Un poco menos de padding en los bordes para móviles */
+        padding: 15px 10px; 
     }
     
     .titulo-principal {
-        font-size: 1.8rem; /* Título ligeramente más pequeño */
+        font-size: 1.8rem;
+        text-align: center;
     }
 
-.layout-contenedor, .columnas-predictores {
-        flex-direction: column; /* ¡ESTA ES LA SOLUCIÓN! Fuerza a que se apilen uno debajo del otro */
-        align-items: center;    /* Centra los elementos en la pantalla */
+    .layout-contenedor, .columnas-predictores {
+        flex-direction: column; 
+        align-items: center;    
         gap: 20px;
         width: 100%;
     }
 
+    /* ESTO PERMITE QUE EL TEXTO BAJE A DOS RENGLONES Y SE CENTRE */
+    .nota-disclaimer {
+        white-space: normal; 
+        text-align: center;
+        padding: 0 15px;
+        line-height: 1.4;
+    }
+
+    /* ESTO CENTRA LA FIRMA 'POWERED BY PHT' */
     .firma-creador {
-        position: relative; /* Deja de estar fijo sobre la pantalla */
+        position: relative; 
         bottom: auto;
         right: auto;
-        margin-top: 30px;
+        margin-top: 25px;
         margin-bottom: 10px;
         text-align: center;
         width: 100%;
+        display: block;
     }
-}   
+}
