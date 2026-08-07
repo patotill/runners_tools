@@ -318,8 +318,11 @@ button i.fa-solid {
         font-size: 1.8rem; /* Título ligeramente más pequeño */
     }
 
-    .layout-contenedor, .columnas-predictores {
-        gap: 20px; /* Reducimos el espacio entre los bloques */
+.layout-contenedor, .columnas-predictores {
+        flex-direction: column; /* ¡ESTA ES LA SOLUCIÓN! Fuerza a que se apilen uno debajo del otro */
+        align-items: center;    /* Centra los elementos en la pantalla */
+        gap: 20px;
+        width: 100%;
     }
 
     .firma-creador {
@@ -331,4 +334,4 @@ button i.fa-solid {
         text-align: center;
         width: 100%;
     }
-}
+}   
